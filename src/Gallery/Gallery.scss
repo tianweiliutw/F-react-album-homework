@@ -1,0 +1,37 @@
+$photo-padding: 30px;
+
+.Gallery {
+  display: flex;
+
+  .Photo {
+    margin-top: 20px;
+    flex: 3;
+    text-align: center;
+
+    &:first-child {
+      text-align: left;
+
+      .Title {
+        padding: 0 $photo-padding 0 0;
+      }
+    }
+
+    &:last-child {
+      text-align: right;
+
+      .Title {
+        padding: 0 0 0 $photo-padding;
+      }
+    }
+
+    .Thumbnail {
+      border-radius: 4px;
+    }
+
+    .Title {
+      text-align: left;
+      margin: 0;
+      padding: 0 15px;
+    }
+  }
+}

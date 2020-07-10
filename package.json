@@ -40,7 +40,9 @@
     "husky": ">=1",
     "jest": "^26.0.1",
     "jest-css-modules-transform": "^4.0.0",
+    "jest-fetch-mock": "^3.0.3",
     "lint-staged": ">=8",
+    "node-sass": "^4.14.1",
     "parcel-bundler": "^1.12.3",
     "prettier": "^2.0.5",
     "start-server-and-test": "^1.10.0"

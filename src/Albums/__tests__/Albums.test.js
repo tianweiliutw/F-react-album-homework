@@ -1,26 +1,13 @@
 import { enableFetchMocks } from 'jest-fetch-mock';
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from '../App';
+import Albums from '../Albums';
 
 enableFetchMocks();
 
 beforeEach(() => {
   fetch.mockIf(/https:\/\/jsonplaceholder.typicode.com.*$/, (req) => {
-    if (req.url.endsWith('users/1')) {
-      return Promise.resolve(
-        JSON.stringify({
-          name: 'Leanne Graham',
-          username: 'Bret',
-          email: 'Sincere@april.biz',
-          phone: '1-770-736-8031 x56442',
-          website: 'hildegard.org',
-          company: {
-            name: 'Romaguera-Crona',
-          },
-        })
-      );
-    } if (req.url.endsWith('albums')) {
+    if (req.url.endsWith('albums')) {
       return Promise.resolve(
         JSON.stringify([
           {
@@ -28,9 +15,19 @@ beforeEach(() => {
             id: 1,
             title: 'quidem molestiae enim',
           },
+          {
+            userId: 1,
+            id: 2,
+            title: 'sunt qui excepturi placeat culpa',
+          },
+          {
+            userId: 1,
+            id: 3,
+            title: 'omnis laborum odio',
+          },
         ])
       );
-    } if (req.url.endsWith('photos')) {
+    } if (req.url.endsWith('1/photos')) {
       return Promise.resolve(
         JSON.stringify([
           {
@@ -61,9 +58,12 @@ beforeEach(() => {
   });
 });
 
-test('should render App', () => {
-  const { getByTestId } = render(<App />);
-  const app = getByTestId('app');
+test('should render Albums', async () => {
+  const { findByText } = render(<Albums />);
 
-  expect(app).not.toBeEmptyDOMElement();
+  expect(await findByText('quidem molestiae enim')).not.toBeEmptyDOMElement();
+  expect(await findByText('sunt qui excepturi placeat culpa')).not.toBeEmptyDOMElement();
+  expect(
+    await findByText('accusamus beatae ad facilis cum similique qui sunt')
+  ).not.toBeEmptyDOMElement();
 });

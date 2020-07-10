@@ -1,4 +1,27 @@
 .UserInfo {
   padding-top: 60px;
   width: 400px;
+
+  .ContactMeSection {
+    margin-top: 2rem;
+
+    &Label {
+      color: gray;
+    }
+
+    &Items {
+      list-style: none;
+      padding: 0;
+    }
+
+    &Item {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+
+      &Label {
+        font-weight: bold;
+      }
+    }
+  }
 }
